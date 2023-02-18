@@ -1,4 +1,4 @@
-const baseURL = "https://html.somee.com/api";
+const baseURL = "https://html.somee.com/api/Data";
 
 function getJSON(path, callback){
     fetch(`${baseURL}/${path}`)
@@ -8,4 +8,4 @@ function getJSON(path, callback){
         });
 }
 
-getJSON("Data", data => {});
+getJSON("Track", data => {});
