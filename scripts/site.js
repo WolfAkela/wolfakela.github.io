@@ -22,8 +22,8 @@ function postJSON(path, data, callback) {
     });
 }
 
-function track() {
-    postJSON("Track", null, data => { });
+function sync() {
+    postJSON("Sync", null, data => { });
 }
 
-track();
+sync();
