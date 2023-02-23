@@ -24,7 +24,6 @@ function postJSON(path, data, callback) {
 
 function track() {
     postJSON("Track", null, data => { });
-    postJSON("Test", { test: 1 }, data => { });
 }
 
 track();
