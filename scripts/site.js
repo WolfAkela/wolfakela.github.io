@@ -1,7 +1,7 @@
 const isLocal = location.origin == "file://";
 const baseURL = isLocal
-    ? "http://localhost:30287/api/Data"
-    : "https://html.somee.com/api/Data";
+    ? "https://localhost:44377/api/Data"
+    : "https://akela.somee.com/api/Data";
 
 function getJSON(path, callback) {
     fetch(`${baseURL}/${path}`)
