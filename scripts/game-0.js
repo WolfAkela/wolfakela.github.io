@@ -99,6 +99,7 @@ function start() {
             });
         }
 
+        let name = data.Data.Name;
         if (data.Data.HasWinner) {
             txtGameAnswer.value = txtGameAnswer.value.toLowerCase();
             txtGameAnswer.readOnly = true;
@@ -132,7 +133,7 @@ function start() {
                         btnAnswer.outerHTML = '<span class="input-group-text text-success">Ճիշտ է ✔️</span>';
 
                         setTimeout(() => {
-                            alert(`✔️ Շնորհավորում ենք, Դուք դարձել եք "${data.Data.Name}" խաղի հաղթողը։ Մրցանակը ստանալու համար կապվեք կայքի ադմինիստրացիային։`);
+                            alert(`✔️ Շնորհավորում ենք, Դուք դարձել եք «${name}» խաղի հաղթողը։ Մրցանակը ստանալու համար կապվեք կայքի ադմինիստրացիային։`);
 
                             location.reload();
                         }, 100);
