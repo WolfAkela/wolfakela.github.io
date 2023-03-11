@@ -4,7 +4,8 @@ function start() {
     let divNoName = document.getElementById("div-no-name");
     let divGame = document.getElementById("div-game");
     let divQuestions = document.getElementById("div-questions");
-    let txtGameAnswer = document.getElementById("txt-game-answer");
+    let divAnswer = document.getElementById("div-answer");
+    let txtAnswer = document.getElementById("txt-answer");
     let btnAnswer = document.getElementById("btn-answer");
 
     function setName() {
@@ -57,7 +58,7 @@ function start() {
                 ? question.IsCurrentUserAnsweredCorrectly
                     ? '<span class="input-group-text text-success">Ճիշտ է ✔️</span>'
                     : ''
-                : '<button class="btn btn-secondary" type="button">Պատասխանել</button>';
+                : '<button class="btn btn-secondary" type="button">Ուղարկել</button>';
 
             divQuestions.innerHTML += `
                 <div class="div-question mb-2" data-id="${question.ID}">
@@ -67,7 +68,7 @@ function start() {
             `;
         }
 
-        var buttons = divQuestions.querySelectorAll("button");
+        let buttons = divQuestions.querySelectorAll("button");
         for (let button of buttons) {
             button.addEventListener("click", () => {
                 let input = button.closest("div").querySelector("input[type='text']");
@@ -100,24 +101,28 @@ function start() {
         }
 
         let name = data.Data.Name;
-        if (data.Data.HasWinner) {
-            txtGameAnswer.value = txtGameAnswer.value.toLowerCase();
-            txtGameAnswer.readOnly = true;
-            txtGameAnswer.classList.add("bg-light");
-            txtGameAnswer.value = data.Data.Questions.map(q => q.Answer[0]).join("");
+        if (data.Data.WinnerName) {
+            txtAnswer.value = txtAnswer.value.toLowerCase();
+            txtAnswer.readOnly = true;
+            txtAnswer.classList.add("bg-light");
+            txtAnswer.value = data.Data.Questions.map(q => q.Answer[0]).join("");
 
             btnAnswer.outerHTML = data.Data.IsCurrentUserWinner
                 ? '<span class="input-group-text text-success">Ճիշտ է ✔️</span>'
                 : '';
+
+            let divWinner = document.createElement("div");
+            divAnswer.appendChild(divWinner);
+            divWinner.outerHTML = `<div class="mb-3"><h6>Հաղթողը՝ «${data.Data.WinnerName}»</h6></div>`;
         }
         else {
             btnAnswer.addEventListener("click", () => {
-                if (!txtGameAnswer.value) {
+                if (!txtAnswer.value) {
                     alert("Պատասխանի տեքստը պարտադիր է։");
                     return;
                 }
 
-                postJSON(`AnswerGame?text=${txtGameAnswer.value}`, null, data => {
+                postJSON(`AnswerGame?text=${txtAnswer.value}`, null, data => {
                     if (!data.IsSuccessful) {
                         alert(data.Message);
                         return;
@@ -126,9 +131,9 @@ function start() {
                     !data.Data && alert(`❌ Սխալ է: Կրկին փորձեք ${minutesUntilNextAnswer} րոպեից։`);
 
                     if (data.Data) {
-                        txtGameAnswer.value = txtGameAnswer.value.toLowerCase();
-                        txtGameAnswer.readOnly = true;
-                        txtGameAnswer.classList.add("bg-light");
+                        txtAnswer.value = txtAnswer.value.toLowerCase();
+                        txtAnswer.readOnly = true;
+                        txtAnswer.classList.add("bg-light");
 
                         btnAnswer.outerHTML = '<span class="input-group-text text-success">Ճիշտ է ✔️</span>';
 
