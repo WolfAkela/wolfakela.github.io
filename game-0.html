@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Խաղ 0 (Փորձնական) - Միացյալ՝ Ընդդեմ Ծակերի</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="styles/site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="logo" height="26" /> ՄԸԾ
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Կուսակցություն
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="people.html">👥 Կազմ</a></li>
+                            <li><a class="dropdown-item" href="vision.html">👁️‍🗨️ Տեսլական</a></li>
+                            <li><a class="dropdown-item" href="history.html">📓 Պատմություն</a></li>
+                            <li><a class="dropdown-item" href="gallery.html">📷 Տեսադարան</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Քվեսթ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item active" href="game-0.html">🎮 Խաղ 0 (Փորձնական)</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="leaderboard.html">🏆 Լավագույն արդյունքներ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Հետադարձ կապ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>🎮 Խաղ 0 (Փորձնական)</h1>
+            </div>
+        </div>
+
+        <hr class="featurette-divider" />
+
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Անուն</span>
+                    <input type="text" id="txt-username" class="form-control" placeholder="Username" />
+                    <button class="btn btn-secondary" type="button" id="btn-save">Պահել</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 d-none" id="div-no-name">
+                <hr class="featurette-divider" />
+
+                <h5>
+                    Խաղը հասանելի կդառնա, երբ ընտրեք անուն։ Անունը պետք է լինի չկրկնվող, սակայն կարող եք այն փոփոխել
+                    հետագայում, ինչքան ցանկանաք։ Անանուն դառնալ այլևս չեք կարողանա։
+                </h5>
+            </div>
+            <div class="col-md-12 d-none" id="div-game">
+                <hr class="featurette-divider" />
+
+                <div id="div-questions" class="col-xl-5"></div>
+
+                <hr class="featurette-divider" />
+
+                <div class="col-xl-5">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Խաղի պատասխան</span>
+                        <input type="text" id="txt-game-answer" class="form-control" />
+                        <button class="btn btn-secondary" type="button" id="btn-answer">Պատասխանել</button>
+                    </div>
+                </div>
+
+                <figcaption class="figure-caption">
+                    * Հարցերի և խաղի պատասխանները նշելիս կարող եք մեծատառ/փոքրատառը հաշվի չառնել<br>
+                    * Հարցերին կամ խաղին սխալ պատասխանելու դեպքում Դուք ստիպված կլինեք սպասել որոշակի ժամանակ, մինչև կկարողանաք տալ հաջորդ պատասխանը<br>
+                    * Խաղի պատասխանը կառուցվում է հարցերի պատասխանների առաջին տառերով, հետևաբար այն բաղկացած է հարցերի քանակությամբ տառերից (օրինակ՝ 5 հարցի դեպքում խաղի պատասխանը 5-տառանի բառ է)<br>
+                    * Խաղի հաղթող է ճանաչվում այն մասնակիցը, ով առաջինն է ճիշտ պատասխանում խաղին (ուշադրություն դարձրեք, որ պարտադիր չէ ճիշտ պատասխանել խաղի հարցերին, դրանք միայն օգնում են գտնել խաղի պատասխանը)<br>
+                    * Եթե Դուք ճիշտ եք պատասխանել տվյալ խաղին, ապա ստանում եք մրցանակ, որի համար պետք է կապվեք ՄԸԾ ադմինիստրացիային
+                </figcaption>
+            </div>
+        </div>
+
+        <hr class="featurette-divider" />
+    </div>
+
+    <footer class="container">
+        <p>© 2023 «Միացյալ՝ Ընդդեմ Ծակերի» կուսակցություն</p>
+    </footer>
+
+    <div class="d-flex justify-content-center d-none" id="div-loading">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
+        type="text/javascript"></script>
+    <script src="scripts/site.js" type="text/javascript"></script>
+    <script src="scripts/game-0.js" type="text/javascript"></script>
+</body>
+
+</html>
