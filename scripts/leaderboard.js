@@ -14,7 +14,7 @@ function start() {
             }
         }
         else {
-            divLeaderboard.innerHTML = '<div class="col-md-12"><h3>Շուտով․․․</h3></div>';
+            divLeaderboard.innerHTML = '<div class="col-md-12"><h3>Հաղթողների ցուցակը կհայտնվի այստեղ, երբ խաղում գոնե մեկ հաղթող լինի։</h3></div>';
         }
     });
 }
