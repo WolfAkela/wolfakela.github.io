@@ -55,7 +55,7 @@ function start() {
                 ? `<input type="text" class="form-control bg-light" readonly value="${question.Answer}" />` 
                 : '<input type="text" class="form-control" />';
             let rightPart = question.Answer
-                ? question.IsCurrentUserAnsweredCorrectly
+                ? data.Data.WinnerName && question.IsCurrentUserAnsweredCorrectly || !data.Data.WinnerName && question.Answer
                     ? '<span class="input-group-text text-success">Ճիշտ է ✔️</span>'
                     : ''
                 : '<button class="btn btn-secondary" type="button">Ուղարկել</button>';
