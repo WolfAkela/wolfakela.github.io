@@ -11,7 +11,7 @@ function start() {
             divLeaderboard.innerHTML = "";
             for (let i = 0; i < data.Data.length; i++) {
                 let winner = data.Data[i];
-                divLeaderboard.innerHTML += `<div class="col-md-12"><h6>Խաղ ${i} (${winner.GameName}) - պատասխանը՝ «${winner.Answer}» | հաղթողը՝ «${winner.WinnerName}»</h6></div>`;
+                divLeaderboard.innerHTML += `<div class="col-md-12"><h6><a href="game.html?number=${i}&id=${winner.GameID}" class="link-info" target="_blank">Խաղ ${i} (${winner.GameName})</a> - պատասխանը՝ «${winner.Answer}» | հաղթողը՝ «${winner.WinnerName}»</h6></div>`;
             }
         }
         else {
