@@ -14,26 +14,26 @@ function searchToObject() {
 }
 
 function getJSON(path, callback) {
-    divLoading.classList.remove("d-none");
+    //divLoading.classList.remove("d-none");
 
     fetch(`${baseURL}/${path}`)
         .then(resp => resp.json())
         .then(data => {
-            divLoading.classList.add("d-none");
+            //divLoading.classList.add("d-none");
 
             callback && callback(data);
         });
 }
 
 function postJSON(path, data, callback) {
-    divLoading.classList.remove("d-none");
+    //divLoading.classList.remove("d-none");
 
     $.ajax({
         url: `${baseURL}/${path}`,
         type: "POST",
         data: data,
         success: data => {
-            divLoading.classList.add("d-none");
+            //divLoading.classList.add("d-none");
 
             callback && callback(data);
         }
