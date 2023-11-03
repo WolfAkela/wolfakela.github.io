@@ -14,26 +14,34 @@ function searchToObject() {
 }
 
 function getJSON(path, callback) {
-    //divLoading.classList.remove("d-none");
+    if (path != "GetAllGames") {
+        divLoading.classList.remove("d-none");
+    }
 
     fetch(`${baseURL}/${path}`)
         .then(resp => resp.json())
         .then(data => {
-            //divLoading.classList.add("d-none");
+            if (path != "GetAllGames") {
+                divLoading.classList.add("d-none");
+            }
 
             callback && callback(data);
         });
 }
 
 function postJSON(path, data, callback) {
-    //divLoading.classList.remove("d-none");
+    if (path != "Sync") {
+        divLoading.classList.remove("d-none");
+    }
 
     $.ajax({
         url: `${baseURL}/${path}`,
         type: "POST",
         data: data,
         success: data => {
-            //divLoading.classList.add("d-none");
+            if (path != "Sync") {
+                divLoading.classList.add("d-none");
+            }
 
             callback && callback(data);
         }
@@ -41,6 +49,14 @@ function postJSON(path, data, callback) {
 }
 
 function buildMenu() {
+    let ddlGames = document.getElementById("ddl-games");
+
+    let li = document.createElement("li");
+    li.id = "li-id";
+    li.innerHTML = '<a class="dropdown-item">Սպասեք...</a>';
+
+    ddlGames.prepend(li);
+
     getJSON("GetAllGames", data => {
         if (!data) {
             console.warn("Unable to build menu.");
@@ -52,15 +68,15 @@ function buildMenu() {
             return;
         }
 
-        let ddlGames = document.getElementById("ddl-games");
+        document.getElementById("li-id").remove();
         for (let i = data.Data.length - 1; i >= 0; i--) {
             let game = data.Data[i];
-            let li = document.createElement("li");
+            
+            li = document.createElement("li");
             li.innerHTML = `<a class="dropdown-item" href="game.html?number=${i}&id=${game.ID}">🎮 Խաղ ${i} (${game.Name})</a>`;
+
             ddlGames.prepend(li);
         }
-
-        sync();
     });
 }
 
@@ -89,3 +105,4 @@ function sync() {
 }
 
 buildMenu();
+sync();
