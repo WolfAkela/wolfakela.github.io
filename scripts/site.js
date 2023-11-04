@@ -8,6 +8,9 @@ const minutesUntilNextAnswer = 15;
 const divNavbar = document.getElementById("navbarCollapse");
 const divLoading = document.getElementById("div-loading");
 
+const spanYear = document.getElementById("span-year");
+spanYear.innerText = new Date().getFullYear();
+
 function searchToObject() {
     var search = location.search.substring(1);
     return search && JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}') || {};
