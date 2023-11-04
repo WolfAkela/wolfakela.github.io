@@ -7,11 +7,9 @@ function start() {
     let divAnswer = document.getElementById("div-answer");
     let txtAnswer = document.getElementById("txt-answer");
     let btnAnswer = document.getElementById("btn-answer");
-    let ddlGames = document.getElementById("ddl-games");
     let h1Title = document.getElementById("h1-title");
     
     let searchObject = searchToObject();
-    ddlGames.children[searchObject.number].querySelector("a").classList.add("active");
     document.title = document.title.replace("Խաղ", `Խաղ ${searchObject.number}`);
     h1Title.innerText = h1Title.innerText.replace("Խաղ", `Խաղ ${searchObject.number}`);
 

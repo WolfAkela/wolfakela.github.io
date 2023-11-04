@@ -77,6 +77,11 @@ function buildMenu() {
 
             ddlGames.prepend(li);
         }
+        
+        let searchObject = searchToObject();
+        if (typeof searchObject.number !== undefined) {
+            ddlGames.children[searchObject.number].querySelector("a").classList.add("active");
+        }
     });
 }
 
